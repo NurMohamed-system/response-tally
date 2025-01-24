@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * The Tallyer class provides functionality for reading ID and topic pairs from user input,
@@ -21,6 +22,29 @@ public class Tallyer {
 
         List<String> ids = new ArrayList<>();
         List<String> topics = new ArrayList<>();
+        topics.add("maps");
+        topics.add("lists");
+        topics.add("loops");
+        topics.add("arrays");
+        topics.add("compound");
+        topics.add("maps");
+        topics.add("arrays");
+        System.out.println(tallyTopics(topics));
+
+        List<String> ids1 = new ArrayList<>();
+        List<String> topics1 = new ArrayList<>();
+        ids1.add("11");
+        ids1.add("12");
+        ids1.add("13");
+        ids1.add("11");
+
+        topics1.add("maps");
+        topics1.add("loops");
+        topics1.add("arrays");
+        topics1.add("arrays");
+        //System.out.println(tallyTopics(topics));
+        System.out.println(tallyTopicsFiltered(ids1, topics1));
+
         
         // Reading input for IDs and topics
         // Assumes file is well formed into pairs
@@ -50,10 +74,20 @@ public class Tallyer {
      * @return a map containing topics as keys and their occurrence counts as values
      */
     public static Map<String, Integer> tallyTopics(List<String> topics) {
-        // WAVE 1
-        // TODO: Implement this method
+        // WAVE 
+        // TODO: Implement this metho
+            Map<String, Integer> topicMap = new TreeMap<>();
+            for(int i =0; i <topics.size(); i++ ) {
+                if(topicMap.containsKey(topics.get(i))) {
+                    //get the value and add 1 to it
+                    topicMap.put(topics.get(i), topicMap.get(topics.get(i)) + 1);
+                }
+                else {
+                    topicMap.put(topics.get(i), 1);
 
-        return null;
+                }
+            }
+        return topicMap;
     }
 
     /**
@@ -69,9 +103,20 @@ public class Tallyer {
      * @return a map containing topics as keys and their occurrence counts as values
      */
     public static Map<String, Integer> tallyTopicsFiltered(List<String> ids, List<String> topics) {
-      // WAVE 2
-      // TODO: Implement this method
+        // WAVE 2
+       // TODO: Implement this method
+          Map<String, Integer> tallyTopicsFiltered = new TreeMap<>();
+            for(int i = 0; i <topics.size(); i++ ) {
+                if(tallyTopicsFiltered.containsKey(topics.get(i))) {
+                    //get the value and add 1 to it
+                    tallyTopicsFiltered.put(topics.get(i), tallyTopicsFiltered.get(topics.get(i)) + 1);
+                }
+                else {
+                    tallyTopicsFiltered.put(topics.get(i), 1);
 
-      return null;
-  }
+                }
+        }
+    return tallyTopicsFiltered;
+
+    }
 }
